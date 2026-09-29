@@ -1,0 +1,54 @@
+/* Cores da marca (modo claro) */
+:root{
+  --bg:#F4F6FB;
+  --surface:#FFFFFF;
+  --ink:#0E1330;
+  --muted:#525A7A;
+  --primary:#3B3BFF;
+  --on-primary:#FFFFFF;
+  --accent:#FFD23F;
+  --line:#D5DAEE;
+  --glow:rgba(59,59,255,.18);
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+
+/* Modo escuro automático */
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0A0D22;
+    --surface:#141A3B;
+    --ink:#EEF0FF;
+    --muted:#A3AAD0;
+    --primary:#7C7CFF;
+    --on-primary:#0A0D22;
+    --line:#2A3266;
+    --glow:rgba(124,124,255,.22);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0A0D22;
+  --surface:#141A3B;
+  --ink:#EEF0FF;
+  --muted:#A3AAD0;
+  --primary:#7C7CFF;
+  --on-primary:#0A0D22;
+  --line:#2A3266;
+  --glow:rgba(124,124,255,.22);
+}
+
+/* Fundo com brilho no topo */
+body{
+  background:radial-gradient(60rem 30rem at 50% -8rem,var(--glow),transparent 70%),var(--bg);
+  min-height:100vh;
+}
+
+/* Efeito ao passar o mouse nos botões */
+.link{transition:transform .15s ease,box-shadow .15s ease}
+.link:hover{transform:translateY(-2px);box-shadow:0 10px 24px -14px var(--primary)}
+
+@media (prefers-reduced-motion:reduce){
+  .link{transition:none}
+  .link:hover{transform:none}
+}
